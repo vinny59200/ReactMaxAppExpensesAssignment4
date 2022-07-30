@@ -7,15 +7,15 @@ import './ExpenseItem.css';
 
 function Expenses(props) {
     const [enteredYear, setEnteredYear] = useState('');
+    const [expensesArray,setExpensesArray] = useState(props.expenses);
     const yearHandler = (enteredYear) => {
         setEnteredYear(enteredYear);
-        console.log(enteredYear)
-        props.onFilteredYear(enteredYear)
+        setExpensesArray(props.expenses.filter(expense=>expense.date.getFullYear() == enteredYear))
     }
     return (<div>
         <ExpenseFilter onSelectYear={yearHandler}></ExpenseFilter>
         <Card className="expenses">
-            {props.expenses.map(exp => (
+            {expensesArray.map(exp => (
                 <ExpenseItem title={exp.title} amount={exp.amount} date={exp.date} key={exp.id} />
             ))}
         </Card>
