@@ -5,6 +5,7 @@ import React from "react";
 import {useState} from 'react'
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpense/NewExpense'
+import * as R from "ramda";
 const DUMMY_EXPENSES = [
   {
     id: 'e1',
@@ -43,5 +44,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
