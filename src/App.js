@@ -2,7 +2,7 @@ import ExpenseItem from './components/Expenses/ExpenseItem';
 import './components/Expenses/ExpenseItem.css'
 import './App.css';
 import React from "react";
-import {useState} from 'react'
+import { useState } from 'react'
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpense/NewExpense'
 import * as R from "ramda";
@@ -27,12 +27,17 @@ const DUMMY_EXPENSES = [
     date: new Date(2022, 5, 12),
   },
 ];
+
+
+
 function App() {
+
   const [enteredExpenses, setEnteredExpenses] = useState(DUMMY_EXPENSES);
-  
+
   const addExpenseHandler = expense => {
-    enteredExpenses.push(expense);
-    setEnteredExpenses(enteredExpenses)
+    setEnteredExpenses((prevExpenses) => {
+      return [expense, ...prevExpenses];
+    });
   }
 
   return (
